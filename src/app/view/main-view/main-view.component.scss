@@ -1,0 +1,45 @@
+.container {
+    border: 1px solid #373737;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+	overflow: hidden;
+	transition: max-height 0.2s;
+
+    .header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: rgb(140,140,140);
+	    font-size: 20px;
+	    font-weight: 500;
+        border-bottom: 1px solid #373737;
+        height: 70px;
+
+        span {
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+
+            &.selected {
+                color: #00FF5C;
+                position: relative;
+                font-weight: 700;
+
+                &:after {
+                    position: absolute;
+                    content: "";
+                    top: 0;
+                    left: 0;
+                    height: 5px;
+                    width: 100%;
+                    background: #00FF5C;
+                    border-radius: 0 0 99px 99px;
+                }
+            }
+        }
+    }
+}
