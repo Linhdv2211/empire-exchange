@@ -2,8 +2,28 @@
   <div class="header">
     <span
     [class.selected]="typeSelected === 'buy'"
-    (click)="typeSelected = 'buy'">Buy</span>
+    (click)="typeSelected = 'buy'">Mua</span>
     <span [class.selected]="typeSelected === 'sell'"
-    (click)="typeSelected = 'sell'">Sell</span>
+    (click)="typeSelected = 'sell'">Bán</span>
+  </div>
+  <div class="main">
+    <form [formGroup]="buyingForm" class="form-main">
+    <div class="steamid">
+      <input type="text" formControlName="steamId" placeholder="Nhập SteamID (ID64)*" />
+    </div>
+    <div class="coin-value">
+      <input type="text" formControlName="coinValue" placeholder="Nhập số coin muốn bán" />
+      <img src="../../../assets/image/exchange-icon.png" />
+      <input type="text" placeholder="Số tiền cần thanh toán"/>
+    </div>
+    <div class="btn-confirm">
+      <button>Thanh toán</button>
+    </div>
+    <!-- <div class="payments">
+      <img src="../../../assets/image/tpbank.jpg" />
+      <span>Hoặc</span>
+      <img src="../../../assets/image/momo.jpg" />
+    </div> -->
+  </form>
   </div>
 </div>

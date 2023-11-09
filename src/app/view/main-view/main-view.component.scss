@@ -1,10 +1,11 @@
 .container {
     border: 1px solid #373737;
-    width: 500px;
-    height: 300px;
+    width: auto;
+    height: auto;
     border-radius: 10px;
 	overflow: hidden;
 	transition: max-height 0.2s;
+    background-color: #121212;
 
     .header {
         display: flex;
@@ -22,10 +23,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 80px;
+            width: 100px;
 
             &.selected {
-                color: #00FF5C;
+                color: #E9B10E;
                 position: relative;
                 font-weight: 700;
 
@@ -36,9 +37,82 @@
                     left: 0;
                     height: 5px;
                     width: 100%;
-                    background: #00FF5C;
+                    background: #E9B10E;
                     border-radius: 0 0 99px 99px;
                 }
+            }
+        }
+    }
+
+    .main {
+        padding: 30px 20px;
+    }
+
+    .form-main {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .steamid {
+            input {
+                background: #333541;
+                color: #dcdcdc;
+                border: unset;
+                height: 50px;
+                width: 100%;
+                border-radius: 10px;
+                font-size: 20px;
+                padding-left: 20px;
+                box-sizing: border-box;
+            }
+            
+        }
+
+        .coin-value {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            input {
+                background: #333541;
+                color: #dcdcdc;
+                border: unset;
+                height: 50px;
+                border-radius: 10px;
+                font-size: 20px;
+                padding-left: 20px;
+                box-sizing: border-box;
+            }
+            
+            img {
+                width: 30px;
+            }
+        }
+
+        .btn-confirm {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            button {
+                background: #E9B10E;
+                height: 50px;
+                border-radius: 10px;
+                color: #1a1c24;
+                min-width: 100px;
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+
+        .payments {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 100px;
+                height: 100px;
             }
         }
     }
