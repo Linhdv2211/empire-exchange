@@ -1,6 +1,7 @@
 .container {
     border: 1px solid #373737;
-    width: auto;
+    max-width: 670px;
+    min-width: 400px;
     height: auto;
     border-radius: 10px;
 	overflow: hidden;
@@ -48,6 +49,12 @@
         padding: 30px 20px;
     }
 
+    .coin-rate, .coin-total {
+        color: #dcdcdc;
+        font-size: 20px;
+        padding-bottom: 15px;
+    }
+
     .form-main {
         display: flex;
         flex-direction: column;
@@ -65,29 +72,55 @@
                 padding-left: 20px;
                 box-sizing: border-box;
             }
+
+            .error-input {
+                border: 2px solid red;
+            }
+
+            .error {
+                padding-top: 5px;
+            }
             
         }
 
         .coin-value {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 5px;
 
-            input {
-                background: #333541;
-                color: #dcdcdc;
-                border: unset;
-                height: 50px;
-                border-radius: 10px;
-                font-size: 20px;
-                padding-left: 20px;
-                box-sizing: border-box;
+            .coin-text {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                gap: 10px;
+
+                input {
+                    background: #333541;
+                    color: #dcdcdc;
+                    border: unset;
+                    height: 50px;
+                    border-radius: 10px;
+                    font-size: 20px;
+                    padding-left: 20px;
+                    box-sizing: border-box;
+                    width: -webkit-fill-available;
+                }
+
+                .value {
+                    &.error-input {
+                        border: 2px solid red;
+                    }
+                }
+                
+                img {
+                    width: 30px;
+                }
             }
+
             
-            img {
-                width: 30px;
-            }
         }
 
         .btn-confirm {
@@ -99,9 +132,21 @@
                 height: 50px;
                 border-radius: 10px;
                 color: #1a1c24;
-                min-width: 100px;
+                min-width: 120px;
                 font-size: 16px;
                 font-weight: 500;
+                cursor: pointer;
+                font-family: Flama-Medium,Flama,sans-serif !important;
+
+                &:active {
+                    transform: translateY(2px);
+                }
+
+                &:hover {
+                    background: #ffc415;
+                    opacity: 1;
+                    transition: 0s;
+                }
             }
         }
 
@@ -115,5 +160,12 @@
                 height: 100px;
             }
         }
+    }
+
+    .error {
+        color: red;
+        font-size: 16px;
+        font-weight: 600;
+
     }
 }

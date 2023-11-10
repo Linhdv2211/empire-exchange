@@ -7,23 +7,24 @@
     (click)="typeSelected = 'sell'">Bán</span>
   </div>
   <div class="main">
-    <form [formGroup]="buyingForm" class="form-main">
+    <div class="coin-rate">Rate: {{ coinRateBuy }}</div>
+    <div class="coin-total">SL khả dụng: {{ totalCoin }}</div>
+    <form [formGroup]="buyingForm" class="form-main" (ngSubmit)="onBuyCoin()">
     <div class="steamid">
-      <input type="text" formControlName="steamId" placeholder="Nhập SteamID (ID64)*" />
+      <input type="text" [class.error-input]="messIdError" formControlName="steamId" placeholder="Nhập SteamID (ID64)*" />
+      <div class="error">{{ messIdError }}</div>
     </div>
     <div class="coin-value">
-      <input type="text" formControlName="coinValue" placeholder="Nhập số coin muốn bán" />
+      <div class="coin-text">
+      <input type="text" [class.error-input]="messValueError" class="value" formControlName="coinValue" placeholder="Nhập số coin muốn mua"/>
       <img src="../../../assets/image/exchange-icon.png" />
-      <input type="text" placeholder="Số tiền cần thanh toán"/>
+      <input type="text" placeholder="Số tiền cần thanh toán" formControlName="cashPay"  readonly/>
+    </div>
+    <div class="error">{{ messValueError }}</div>
     </div>
     <div class="btn-confirm">
-      <button>Thanh toán</button>
+      <button type="submit">Thanh toán</button>
     </div>
-    <!-- <div class="payments">
-      <img src="../../../assets/image/tpbank.jpg" />
-      <span>Hoặc</span>
-      <img src="../../../assets/image/momo.jpg" />
-    </div> -->
   </form>
   </div>
 </div>
