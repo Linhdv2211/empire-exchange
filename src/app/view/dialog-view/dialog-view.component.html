@@ -1,24 +1,50 @@
 <div class="container">
-  <div class="title">Phương thức thanh toán</div>
+  <h1 class="title">Phương thức thanh toán</h1>
+  <div class="user-info">
+    <div class="steamId">SteamId: <span>{{ steamId }}</span> </div>
+    <div class="quantity">SL coin muốn mua: <span>{{ coinValue }}</span></div>
+    <div class="cash">Số tiền cần phải thanh toán: <span>{{ cashPay }}</span></div>
+  </div>
   <div class="payments-area">
     <div class="ebank">
-      <div class="info-bank">
-        <div class="name-bank">Ngân hàng Tiên Phong Bank (TP Bank)</div>
-        <div class="num-bank">02003634701</div>
-        <div class="name">CTK: Dương Việt Linh</div>
+      <h2 class="title">Banking</h2>
+      <div class="area">
+        <div class="info">
+          <div class="name-bank">Ngân hàng Tiên Phong Bank (TP Bank)</div>
+          <div class="num-bank">STK: 02003634701</div>
+          <div class="name">CTK: DƯƠNG VIỆT LINH</div>
+        </div>
+        <div class="qr">
+          <img src="../../../assets/image/tpbank.jpg" />
+        </div>
       </div>
-      <div class="qr-bank">
-        <img src="../../../assets/image/tpbank.jpg" />
+      <div class="area area-padding">
+        <div class="info">
+          <div class="name-bank">Ngân hàng Quốc Tế VIB</div>
+          <div class="num-bank">STK: 298985555</div>
+          <div class="name">CTK: DƯƠNG VIỆT LINH</div>
+        </div>
+        <div class="qr">
+          <img src="../../../assets/image/vib-bank.jpg" />
+        </div>
       </div>
     </div>
     <div class="momo-wallet">
-      <div class="phone-num">SĐT: 0973972084</div>
-      <div class="qr-momo">
-        <img src="../../../assets/image/momo.jpg" />
+      <h3 class="title">MoMo</h3>
+      <div class="area">
+        <div class="info">
+          <div class="phone-num">SĐT: 0973972084</div>
+          <div class="name">CTK: DƯƠNG VIỆT LINH</div>
+        </div>
+        <div class="qr">
+          <img src="../../../assets/image/momo.jpg" />
+        </div>
       </div>
     </div>
   </div>
-  <div class="btn-success">
-    <button>Hoàn tất</button>
+  <div class="btn-area">
+    <button (click)="onSuccess()">Hoàn tất
+    <img *ngIf="onLoading" src="../../../assets/image/spin-loading.svg"/>
+    </button>
   </div>
 </div>

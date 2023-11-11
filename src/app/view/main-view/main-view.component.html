@@ -1,30 +1,69 @@
 <div class="container">
   <div class="header">
     <span
-    [class.selected]="typeSelected === 'buy'"
-    (click)="typeSelected = 'buy'">Mua</span>
-    <span [class.selected]="typeSelected === 'sell'"
-    (click)="typeSelected = 'sell'">Bán</span>
+      [class.selected]="typeSelected === 'buy'"
+      (click)="typeSelected = 'buy'"
+      >Mua</span
+    >
+    <span
+      [class.selected]="typeSelected === 'sell'"
+      (click)="typeSelected = 'sell'"
+      >Bán</span
+    >
   </div>
   <div class="main">
-    <div class="coin-rate">Rate: {{ coinRateBuy }}</div>
-    <div class="coin-total">SL khả dụng: {{ totalCoin }}</div>
-    <form [formGroup]="buyingForm" class="form-main" (ngSubmit)="onBuyCoin()">
-    <div class="steamid">
-      <input type="text" [class.error-input]="messIdError" formControlName="steamId" placeholder="Nhập SteamID (ID64)*" />
-      <div class="error">{{ messIdError }}</div>
-    </div>
-    <div class="coin-value">
-      <div class="coin-text">
-      <input type="text" [class.error-input]="messValueError" class="value" formControlName="coinValue" placeholder="Nhập số coin muốn mua"/>
-      <img src="../../../assets/image/exchange-icon.png" />
-      <input type="text" placeholder="Số tiền cần thanh toán" formControlName="cashPay"  readonly/>
-    </div>
-    <div class="error">{{ messValueError }}</div>
-    </div>
-    <div class="btn-confirm">
-      <button type="submit">Thanh toán</button>
-    </div>
-  </form>
+    <ng-container *ngIf="typeSelected === 'buy'">
+      <div class="coin-rate">Rate: {{ coinRateBuy }}</div>
+      <div class="coin-total">SL khả dụng: {{ totalCoin }}</div>
+      <form [formGroup]="buyingForm" class="form-main" (ngSubmit)="onBuyCoin()">
+        <div class="steamid">
+          <input
+            type="text"
+            [class.error-input]="messIdError"
+            formControlName="steamId"
+            placeholder="Nhập SteamID (ID64)*"
+          />
+          <div class="error">{{ messIdError }}</div>
+        </div>
+        <div class="coin-value">
+          <div class="coin-text">
+            <input
+              type="text"
+              [class.error-input]="messValueError"
+              class="value"
+              formControlName="coinValue"
+              placeholder="Nhập số coin muốn mua"
+            />
+            <img src="../../../assets/image/exchange-icon.png" />
+            <input
+              type="text"
+              placeholder="Số tiền cần thanh toán"
+              formControlName="cashPay"
+              readonly
+            />
+          </div>
+          <div class="error">{{ messValueError }}</div>
+        </div>
+        <div class="btn-confirm">
+          <button type="submit">Thanh toán</button>
+        </div>
+      </form>
+    </ng-container>
+
+    <ng-container *ngIf="typeSelected === 'sell'">
+      <div class="content-area">
+        <div class="rate">Rate: {{ coinRateSell }}</div>
+        <div class="title">
+          Để bán vui lòng nhắn tin qua <a (click)="openLink()">Facebook</a> hoặc
+          qua Zalo: 0973972084.
+        </div>
+        <div class="end-des">Cảm ơn các bạn đã tin tưởng và ủng hộ.</div>
+      </div>
+    </ng-container>
   </div>
+</div>
+<div class="attention">
+  Chú ý: Khi chuyển khoản vui lòng chụp lại màn hình bill bạn nhé ! <br />Nếu có
+  vấn đề gì vui lòng liên hệ <a (click)="openLink()">Facebook</a> hoặc Zalo:
+  0973972084
 </div>

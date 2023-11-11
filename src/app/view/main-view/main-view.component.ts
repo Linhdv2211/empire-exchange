@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { MatDialog } from '@angular/material';
 import { DialogViewComponent } from '../dialog-view/dialog-view.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-main-view',
   templateUrl: './main-view.component.html',
@@ -11,11 +11,12 @@ export class MainViewComponent implements OnInit {
 
   public typeSelected: string = 'buy';
   public coinRateBuy: string = '15.5';
-  public totalCoin: number = 50;
+  public totalCoin: number = 99999;
   public buyingForm: FormGroup;
   public messIdError = '';
   public messValueError = '';
   public needToPay: number;
+  public coinRateSell: string = '15.0';
 
   constructor(
     private fb: FormBuilder,
@@ -37,7 +38,7 @@ export class MainViewComponent implements OnInit {
 
   public exchangeValueCash() {
     this.buyingForm.get('coinValue')?.valueChanges.subscribe((value) => {
-      this.buyingForm.get('cashPay')?.setValue(value * 15500);
+      this.buyingForm.get('cashPay')?.setValue(`${this.transformNumber(value * 15500)} VNĐ`);
     });
   }
 
@@ -78,10 +79,10 @@ export class MainViewComponent implements OnInit {
     const isCheckValidateId = this.checkValidateIdForm();
     const isCheckValidateValue = this.checkValidateValueForm();
     if (isCheckValidateId && isCheckValidateValue) {
+      this.showDialog();
       this.defaultErrorMessenger();
       console.log('success!!');
     }
-    this.showDialog();
   }
 
   public defaultErrorMessenger() {
@@ -89,11 +90,25 @@ export class MainViewComponent implements OnInit {
     this.messIdError = '';
   }
 
+  public transformNumber(value: number): string {
+    const formattedValue = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return formattedValue;
+  }
+
   public showDialog() {
     this.dialog.open(DialogViewComponent, {
-      width: '400px',
-      disableClose: true
-    })
+      disableClose: false,
+      maxHeight: '90vh',
+      data: {
+        steamId: this.buyingForm.value['steamId'],
+        coinValue: this.buyingForm.value['coinValue'],
+        cashPay: this.buyingForm.value['cashPay']
+      }
+    });
+  }
+
+  public openLink() {
+    window.open('https://www.facebook.com/linhdv4013/');
   }
 
 }
